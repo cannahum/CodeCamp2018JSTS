@@ -1,0 +1,19 @@
+{
+  "status": "ok",
+  "totalResults": 9,
+  "articles": [
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": null,
+      "title": "Google+ Shut Down After Security Flaw Discovered",
+      "description": null,
+      "url": "https://www.bloomberg.com/news/videos/2018-10-08/google-shut-down-after-security-flaw-discovered-video",
+      "urlToImage": null,
+      "publishedAt": "2018-10-08T22:30:16+00:00",
+      "content": "To continue, please click the box below to let us know you're not a robot."
+    }
+  ]
+}
