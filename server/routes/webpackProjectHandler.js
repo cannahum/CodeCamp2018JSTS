@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
     <!DOCTYPE html>
     <html>
         <head>
-        <title>CodeCamp 2018</title>
+        <title>CodeCamp 2018 - React App</title>
         </head>
         <body>
         <div id="target"></div>

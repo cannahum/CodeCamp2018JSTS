@@ -9,6 +9,7 @@ const {
 const app = express();
 
 app.use(express.static('dist'));
+app.use('/node_modules', express.static('node_modules'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res) {

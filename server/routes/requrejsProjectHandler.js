@@ -1,20 +1,11 @@
 const express = require('express');
 
+const path = require('path');
+
 const router = express.Router();
 
 router.get('/', function(req, res) {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-        <head>
-        <title>CodeCamp 2018</title>
-        </head>
-        <body>
-        <h1>Hello, here is an ancient tech Project!</h1>
-    </body>
-    </head>
-    </html>
-  `);
+  res.sendFile(path.resolve(__dirname, '../../src/backbone/index.html'));
 });
 
 module.exports = router;
