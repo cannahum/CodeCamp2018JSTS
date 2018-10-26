@@ -1,24 +1,37 @@
 const path = require('path');
+const fs = require('fs');
 const gulp = require('gulp'),
-  rjs = require('gulp-requirejs'),
-  sourcemaps = require('gulp-sourcemaps');
+  del = require('del');
 
 const basePath = path.resolve(__dirname, '../../');
-const srcPath = path.resolve(basePath, '/src/backbone');
-const distPath = path.resolve(basePath, '/dist');
+const srcPath = basePath + '/src/backbone';
+const distPath = basePath + '/dist';
+const buildFolderName = '/backbone';
 
-gulp.task('default', function() {
-  return rjs({
-    baseUrl: srcPath,
-    out: distPath + '/dist/bundle.js',
-    main: 'mainfile', // no extension
-    generateSourceMaps: true,
-    shim: {
-      // standard require.js shim options
-    },
-    // ... more require.js options
-  })
-    .pipe(sourcemaps.init({ loadMaps: true })) // initialize gulp-sourcemaps with the existing map
-    .pipe(sourcemaps.write()) // write the source maps
-    .pipe(gulp.dest(distPath)); // pipe it to the output DIR
+gulp.task('clean', function() {
+
+  console.log(basePath);
+  if (!fs.existsSync(distPath)) {
+    fs.mkdirSync(distPath);
+  }
+  if (!fs.existsSync(distPath + buildFolderName)) {
+    fs.mkdirSync(distPath + buildFolderName);
+  }
+  return del([
+    distPath + '/backbone/**/*'
+  ], {
+    force: true,
+  });
 });
+
+const buildBackboneApp = function() {
+  console.log('********* BUILDING *********');
+  return gulp.src(srcPath + '/**/*')
+    .pipe(gulp.dest(distPath + buildFolderName));
+};
+
+const watchFiles = function() {
+  gulp.watch(srcPath + '/**/*', buildBackboneApp);
+};
+
+gulp.task('default', gulp.series('clean', gulp.parallel(buildBackboneApp, watchFiles)));
