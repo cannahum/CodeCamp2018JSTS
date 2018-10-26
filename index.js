@@ -1,7 +1,7 @@
-const server = require('./server');
+const server = require('./server/server');
 
 function getPort() {
-  var arg = process.argv[2];
+  const arg = process.argv[2];
   if (arg) {
     return parseInt(arg);
   }
@@ -10,5 +10,5 @@ function getPort() {
   }
 }
 
-var port = getPort();
+const port = getPort();
 server.startServer(port);
