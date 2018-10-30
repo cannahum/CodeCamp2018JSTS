@@ -30,12 +30,17 @@ export default ({ id, currentValue, onChange, onValidation, errors }) => {
   };
 
   return (
-    <div id={`${id}-wrapper`} style={{ padding: '10px' }}>
-      <label style={{ marginRight: '10px', display: 'inline-block', minWidth: '150px' }}>{label}</label>
-      <input id={id} type="text" value={currentValue} onChange={onChange} onBlur={onBlurEvent}/>
+    <div id={`${id}-wrapper`} className="bank-input-wrapper">
+      <input id={id}
+             className="bank-input-control"
+             placeholder={label}
+             type="text"
+             value={currentValue}
+             onChange={onChange}
+             onBlur={onBlurEvent}/>
       {
         errors && errors.length > 0
-          ? <label style={{ display: 'inline-block', minWidth: '150px', color: 'red', marginLeft: '10px' }}>{errors[0]}</label>
+          ? <label className="form-error-label">{errors[0]}</label>
           : null
       }
     </div>

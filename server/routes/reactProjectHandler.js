@@ -11,6 +11,7 @@ router.get('/', function(req, res) {
         </head>
         <body>
         <div id="target"></div>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Product+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
         <script src="react/bundle.js"></script>
     </body>
     </head>

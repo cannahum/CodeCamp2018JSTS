@@ -69,29 +69,33 @@ export default class BankForm extends React.Component {
     const { creditCardNumber, month, year, cvv } = this.state;
 
     return (
-      <div id="bank-form">
-        <h2>Please enter your information</h2>
-        <BankInput id="creditCardNumber"
-                   currentValue={creditCardNumber.input}
-                   errors={creditCardNumber.errors}
-                   onChange={this.onInputChange('creditCardNumber')}
-                   onValidation={this.onInputBlurValidation('creditCardNumber')}/>
-        <BankInput id="month"
-                   currentValue={month.input}
-                   errors={month.errors}
-                   onChange={this.onInputChange('month')}
-                   onValidation={this.onInputBlurValidation('month')}/>
-        <BankInput id="year"
-                   currentValue={year.input}
-                   errors={year.errors}
-                   onChange={this.onInputChange('year')}
-                   onValidation={this.onInputBlurValidation('year')}/>
-        <BankInput id="cvv"
-                   currentValue={cvv.input}
-                   errors={cvv.errors}
-                   onChange={this.onInputChange('cvv')}
-                   onValidation={this.onInputBlurValidation('cvv')}/>
-        <SubmitButton onClick={this.onSubmitButtonClick}/>
+      <div className="card">
+        <div id="bank-form-container">
+          <h2>Please enter your information</h2>
+          <div id="form-group">
+            <BankInput id="creditCardNumber"
+                       currentValue={creditCardNumber.input}
+                       errors={creditCardNumber.errors}
+                       onChange={this.onInputChange('creditCardNumber')}
+                       onValidation={this.onInputBlurValidation('creditCardNumber')}/>
+            <BankInput id="month"
+                       currentValue={month.input}
+                       errors={month.errors}
+                       onChange={this.onInputChange('month')}
+                       onValidation={this.onInputBlurValidation('month')}/>
+            <BankInput id="year"
+                       currentValue={year.input}
+                       errors={year.errors}
+                       onChange={this.onInputChange('year')}
+                       onValidation={this.onInputBlurValidation('year')}/>
+            <BankInput id="cvv"
+                       currentValue={cvv.input}
+                       errors={cvv.errors}
+                       onChange={this.onInputChange('cvv')}
+                       onValidation={this.onInputBlurValidation('cvv')}/>
+          </div>
+          <SubmitButton onClick={this.onSubmitButtonClick}/>
+        </div>
       </div>
     );
   }
