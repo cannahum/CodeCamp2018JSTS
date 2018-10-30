@@ -2,8 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const {
-  webpackProjectHandler,
-  requirejsProjectHandler,
+  reactProjectHandler,
+  backboneProjectHandler,
 } = require('./routes');
 
 const app = express();
@@ -16,9 +16,9 @@ app.get('/', function(req, res) {
   res.send('Hello World');
 });
 
-app.use('/webpack-project', webpackProjectHandler);
+app.use('/react-project', reactProjectHandler);
 
-app.use('/requirejs-project', requirejsProjectHandler);
+app.use('/backbone-project', backboneProjectHandler);
 
 module.exports.startServer = function(port) {
   app.listen(port, function() {

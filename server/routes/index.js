@@ -1,4 +1,4 @@
 module.exports = {
-  webpackProjectHandler: require('./webpackProjectHandler'),
-  requirejsProjectHandler: require('./requrejsProjectHandler'),
+  reactProjectHandler: require('./reactProjectHandler'),
+  backboneProjectHandler: require('./backboneProjectHandler'),
 };

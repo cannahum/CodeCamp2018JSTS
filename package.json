@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "build-backbone": "./node_modules/.bin/gulp --gulpfile conf/requirejs/gulpfile.js",
-    "build-react-dev": "webpack -w --config conf/webpack/webpack.config.dev.js",
-    "build-react-prod": "webpack --config conf/webpack/webpack.config.prod.js",
+    "build-react": "webpack -w --config conf/webpack/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
