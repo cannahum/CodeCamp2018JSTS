@@ -1,8 +1,8 @@
 import React from 'react';
-import BankInput from './BankInput';
+import FormInput from './FormInput';
 import SubmitButton from './SubmitButton';
 
-export default class BankForm extends React.Component {
+export default class CreditCardForm extends React.Component {
 
   constructor(props) {
     super(props);
@@ -73,22 +73,22 @@ export default class BankForm extends React.Component {
         <div id="bank-form-container">
           <h2>Please enter your information</h2>
           <div id="form-group">
-            <BankInput id="creditCardNumber"
+            <FormInput id="creditCardNumber"
                        currentValue={creditCardNumber.input}
                        errors={creditCardNumber.errors}
                        onChange={this.onInputChange('creditCardNumber')}
                        onValidation={this.onInputBlurValidation('creditCardNumber')}/>
-            <BankInput id="month"
+            <FormInput id="month"
                        currentValue={month.input}
                        errors={month.errors}
                        onChange={this.onInputChange('month')}
                        onValidation={this.onInputBlurValidation('month')}/>
-            <BankInput id="year"
+            <FormInput id="year"
                        currentValue={year.input}
                        errors={year.errors}
                        onChange={this.onInputChange('year')}
                        onValidation={this.onInputBlurValidation('year')}/>
-            <BankInput id="cvv"
+            <FormInput id="cvv"
                        currentValue={cvv.input}
                        errors={cvv.errors}
                        onChange={this.onInputChange('cvv')}

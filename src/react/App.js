@@ -1,5 +1,5 @@
 import React from 'react';
-import BankForm from './components/BankForm';
+import CreditCardForm from './components/CreditCardForm';
 
 import './App.scss';
 
@@ -7,7 +7,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <BankForm />
+      <CreditCardForm />
     );
   }
 }

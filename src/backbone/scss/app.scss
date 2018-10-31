@@ -1,0 +1,85 @@
+$color-primary-light: #5775ff;
+$color-primary-dark: #3E60FF;
+$color-secondary-light: #FFAD53;
+$color-secondary-dark: #FF8E58;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'Product Sans';
+  background-color: #FAFAFA;
+
+  .card {
+    margin: 15px 0;
+    width: 80%;
+    box-shadow: 0 3px 10px 0 rgba(91, 87, 158, 0.15);
+    border-radius: .6rem;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    margin: 15px auto;
+
+    #bank-form-container {
+
+      h2 {
+        background-image: linear-gradient(to right, $color-secondary-dark, $color-secondary-light);
+        margin: 0;
+        padding: 20px 10px;
+        color: white;
+      }
+
+      #form-group {
+        margin: 10px 0;
+      }
+
+      .bank-input {
+        &-wrapper {
+          padding-left: 10px;
+          margin: 10px 0;
+
+          .form-error-label {
+            display: inline-block;
+            max-width: 300px;
+            color: red;
+            margin-left: 10px
+          }
+        }
+
+        &-control {
+          border: 0;
+          padding: 15px 0;
+          border-bottom: 2px solid #CBCBCE;
+          width: 40%;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: 500;
+          &:focus {
+            border-bottom-color: $color-primary-light;
+          }
+        }
+      }
+
+      .submit-button {
+        width: calc(50% - 1rem);
+
+        margin: 20px auto;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 500;
+        display: block;
+        padding: 1.2rem;
+        border-radius: 3px;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+
+        background-color: $color-primary-light;
+        color: white;
+        transition: background-color .1s;
+        &:hover {
+          background-color: darken($color-primary-light, 5);
+        }
+      }
+    }
+  }
+}

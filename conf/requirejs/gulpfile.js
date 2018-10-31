@@ -1,7 +1,10 @@
 const path = require('path');
 const fs = require('fs');
 const gulp = require('gulp'),
+  sass = require('gulp-sass'),
   del = require('del');
+
+sass.compiler = require('node-sass');
 
 const basePath = path.resolve(__dirname, '../../');
 const srcPath = basePath + '/src/backbone';
@@ -26,12 +29,18 @@ gulp.task('clean', function() {
 
 const buildBackboneApp = function() {
   console.log('********* BUILDING *********');
-  return gulp.src(srcPath + '/**/*')
+  return gulp.src([srcPath + '/**/*.js', srcPath + '/**/*.html'])
     .pipe(gulp.dest(distPath + buildFolderName));
 };
 
-const watchFiles = function() {
+const watchJsFiles = function() {
   gulp.watch(srcPath + '/**/*', buildBackboneApp);
 };
 
-gulp.task('default', gulp.series('clean', gulp.parallel(buildBackboneApp, watchFiles)));
+const watchScssFiles = function() {
+  return gulp.src(srcPath + '/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(distPath + buildFolderName));
+};
+
+gulp.task('default', gulp.series('clean', gulp.parallel(buildBackboneApp, watchJsFiles, watchScssFiles)));
