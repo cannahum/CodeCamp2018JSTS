@@ -19,7 +19,7 @@ body {
     background-color: #FFFFFF;
     margin: 15px auto;
 
-    #bank-form-container {
+    #form-container {
 
       h2 {
         background-image: linear-gradient(to right, $color-secondary-dark, $color-secondary-light);
@@ -32,7 +32,7 @@ body {
         margin: 10px 0;
       }
 
-      .bank-input {
+      .form-input {
         &-wrapper {
           padding-left: 10px;
           margin: 10px 0;

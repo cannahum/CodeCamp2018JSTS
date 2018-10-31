@@ -70,7 +70,7 @@ export default class CreditCardForm extends React.Component {
 
     return (
       <div className="card">
-        <div id="bank-form-container">
+        <div id="form-container">
           <h2>Please enter your information</h2>
           <div id="form-group">
             <FormInput id="creditCardNumber"

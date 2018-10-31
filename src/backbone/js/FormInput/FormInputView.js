@@ -2,17 +2,27 @@ define([
   'jquery',
   'backbone',
   'underscore',
-  'text!./template.html'
-], function($, Backbone, _, templateString) {
+  'text!./template.html',
+  '../utils'
+], function($, Backbone, _, templateString, utils) {
 
   var FormInputView = Backbone.View.extend({
     template: _.template(templateString),
+
+    events: {
+      'focusout': 'onBlur'
+    },
 
     initialize: function(opts) {
       this.field = opts.field;
     },
 
-    render: function() {
+    onBlur: function(e) {
+      e.preventDefault();
+      utils.validate(this.field, e.target.value, this.render.bind(this));
+    },
+
+    render: function(errors) {
       var placeholder;
 
       switch (this.field) {
@@ -35,7 +45,8 @@ define([
       }
 
       this.$el.append(this.template({
-        placeholder: placeholder
+        placeholder: placeholder,
+        error: errors[0],
       }));
 
       return this;

@@ -30,9 +30,9 @@ export default ({ id, currentValue, onChange, onValidation, errors }) => {
   };
 
   return (
-    <div id={`${id}-wrapper`} className="bank-input-wrapper">
+    <div id={`${id}-wrapper`} className="form-input-wrapper">
       <input id={id}
-             className="bank-input-control"
+             className="form-input-control"
              placeholder={label}
              type="text"
              value={currentValue}

@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const gulp = require('gulp'),
   sass = require('gulp-sass'),
+  requireConvert = require("gulp-require-convert"),
   del = require('del');
 
 sass.compiler = require('node-sass');
@@ -27,20 +28,26 @@ gulp.task('clean', function() {
   });
 });
 
-const buildBackboneApp = function() {
+const buildJs = function() {
   console.log('********* BUILDING *********');
-  return gulp.src([srcPath + '/**/*.js', srcPath + '/**/*.html'])
+  return gulp.src(srcPath + '/**/*.js')
+    .pipe(requireConvert())
     .pipe(gulp.dest(distPath + buildFolderName));
 };
 
-const watchJsFiles = function() {
-  gulp.watch(srcPath + '/**/*', buildBackboneApp);
-};
-
-const watchScssFiles = function() {
+const buildScss = function() {
   return gulp.src(srcPath + '/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(distPath + buildFolderName));
 };
 
-gulp.task('default', gulp.series('clean', gulp.parallel(buildBackboneApp, watchJsFiles, watchScssFiles)));
+const buildHtml = function() {
+  return gulp.src(srcPath + '/**/*.html')
+    .pipe(gulp.dest(distPath + buildFolderName));
+};
+
+const watchFiles = function() {
+  gulp.watch(srcPath + '/**/*', buildJs);
+};
+
+gulp.task('default', gulp.series('clean', gulp.parallel(buildJs, watchFiles, buildScss, buildHtml)));
