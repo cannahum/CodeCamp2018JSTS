@@ -10,16 +10,25 @@ define([
     template: _.template(templateString),
 
     events: {
-      'focusout': 'onBlur'
+      'focusout': 'onBlur',
+      'keyup input.form-input-control': 'onChange',
     },
 
     initialize: function(opts) {
       this.field = opts.field;
+      this.value = '';
     },
 
     onBlur: function(e) {
-      e.preventDefault();
-      utils.validate(this.field, e.target.value, this.render.bind(this));
+      utils.validate(this.field, this.value, this.render.bind(this));
+    },
+
+    onChange: function(e) {
+      this.value = e.target.value;
+      Backbone.Events.trigger('onFormInputChange', {
+        field: this.field,
+        value: this.value,
+      });
     },
 
     render: function(errors) {
@@ -44,9 +53,11 @@ define([
         }
       }
 
-      this.$el.append(this.template({
+      this.$el.html(this.template({
+        field: this.field,
+        value: this.value,
         placeholder: placeholder,
-        error: errors[0],
+        error: errors && errors[0],
       }));
 
       return this;

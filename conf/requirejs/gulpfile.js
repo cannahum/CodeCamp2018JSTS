@@ -47,7 +47,9 @@ const buildHtml = function() {
 };
 
 const watchFiles = function() {
-  gulp.watch(srcPath + '/**/*', buildJs);
+  gulp.watch(srcPath + '/**/*.js', buildJs);
+  gulp.watch(srcPath + '/**/*.scss', buildScss);
+  gulp.watch(srcPath + '/**/*.html', buildHtml);
 };
 
 gulp.task('default', gulp.series('clean', gulp.parallel(buildJs, watchFiles, buildScss, buildHtml)));

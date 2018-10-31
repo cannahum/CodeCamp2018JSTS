@@ -2,7 +2,7 @@ define([
   'card-validator'
 ], function(cardValidator) {
 
-  return function(id, value, callback) {
+  const validate = function(id, value, callback) {
 
     let errors = [];
     switch (id) {
@@ -45,6 +45,10 @@ define([
 
     }
     callback(errors);
+  };
+
+  return {
+    validate: validate,
   };
 
 });
