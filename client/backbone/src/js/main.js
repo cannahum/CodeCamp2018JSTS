@@ -7,12 +7,19 @@ require.config({
     }
   ],
   paths: {
-    jquery: '/node_modules/jquery/dist/jquery.min',
-    underscore: '/node_modules/underscore/underscore-min',
-    backbone: '/node_modules/backbone/backbone-min',
-    text: '/node_modules/text/text',
-    'credit-card-type': '/node_modules/credit-card-type/dist/js/app.built'
+    jquery: '../jquery/dist/jquery.min',
+    underscore: '../underscore/underscore-min',
+    backbone: '../backbone/backbone-min',
+    text: '../text/text',
+    'credit-card-type': '../credit-card-type/dist/js/app.built'
   },
+  config: {
+    text: {
+      useXhr: function (url, protocol, hostname, port) {
+        return true;
+      }
+    },
+  }
 });
 
 require([

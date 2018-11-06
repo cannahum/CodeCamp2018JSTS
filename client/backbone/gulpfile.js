@@ -3,14 +3,15 @@ const fs = require('fs');
 const gulp = require('gulp'),
   sass = require('gulp-sass'),
   requireConvert = require("gulp-require-convert"),
+  serve = require('gulp-serve'),
   del = require('del');
 
 sass.compiler = require('node-sass');
 
-const basePath = path.resolve(__dirname, '../../');
-const srcPath = basePath + '/src/backbone';
+const basePath = path.resolve(__dirname);
+const srcPath = basePath + '/src';
 const distPath = basePath + '/dist';
-const buildFolderName = '/backbone';
+const buildFolderName = '';
 
 gulp.task('clean', function() {
 
@@ -22,11 +23,16 @@ gulp.task('clean', function() {
     fs.mkdirSync(distPath + buildFolderName);
   }
   return del([
-    distPath + '/backbone/**/*'
+    distPath + '/**/*'
   ], {
     force: true,
   });
 });
+
+gulp.task('serve', serve({
+  root: [distPath, 'node_modules'],
+  port: 8081,
+}));
 
 const buildJs = function() {
   console.log('********* BUILDING *********');
@@ -52,4 +58,4 @@ const watchFiles = function() {
   gulp.watch(srcPath + '/**/*.html', buildHtml);
 };
 
-gulp.task('default', gulp.series('clean', gulp.parallel(buildJs, watchFiles, buildScss, buildHtml)));
+gulp.task('default', gulp.series('clean', gulp.parallel(buildJs, watchFiles, buildScss, buildHtml, 'serve')));
