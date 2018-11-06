@@ -2,10 +2,10 @@ const path = require('path');
 
 console.log(__dirname);
 module.exports = {
-  entry: path.resolve(__dirname, '../../src/react'),
+  entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, '../../dist/react'),
+    path: path.resolve(__dirname, 'dist'),
   },
   mode: 'development',
   devtool: 'inline-source-map',
@@ -27,5 +27,9 @@ module.exports = {
         ]
       }
     ]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
   }
 };
