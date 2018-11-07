@@ -2,13 +2,13 @@ define([
   'card-validator'
 ], function(cardValidator) {
 
-  const validate = function(id, value, callback) {
+  var validate = function(id, value, callback) {
 
-    let errors = [];
+    var errors = [];
     switch (id) {
 
       case 'creditCardNumber': {
-        const validation = cardValidator.number(value);
+        var validation = cardValidator.number(value);
         if (!validation.isPotentiallyValid) {
           errors.push('Please Enter a Valid Card Number');
         }
@@ -16,7 +16,7 @@ define([
       }
 
       case 'month': {
-        const validation = cardValidator.expirationMonth(value);
+        var validation = cardValidator.expirationMonth(value);
         if (!validation.isPotentiallyValid) {
           errors.push('Please Enter The Month on the Card');
         }
@@ -24,7 +24,7 @@ define([
       }
 
       case 'year': {
-        const validation = cardValidator.expirationYear(value);
+        var validation = cardValidator.expirationYear(value);
         if (!validation.isPotentiallyValid) {
           errors.push('Please Enter The Year on the Card');
         }
@@ -32,7 +32,7 @@ define([
       }
 
       case 'cvv': {
-        const validation = cardValidator.cvv(value);
+        var validation = cardValidator.cvv(value);
         if (!validation.isPotentiallyValid) {
           errors.push('Please Enter the CVV Number on the Back of Your Card');
         }

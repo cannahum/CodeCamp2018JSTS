@@ -18,10 +18,11 @@
     "underscore": "^1.9.1"
   },
   "devDependencies": {
+    "amd-optimize": "^0.6.1",
     "del": "^3.0.0",
-    "gulp": "^4.0.0",
+    "gulp": "git://github.com/gulpjs/gulp.git#6d71a658c61edb3090221579d8f97dbe086ba2ed",
     "gulp-cli": "^2.0.1",
-    "gulp-require-convert": "0.0.1",
+    "gulp-concat": "^2.6.1",
     "gulp-sass": "^4.0.2",
     "gulp-serve": "^1.4.0",
     "node-sass": "^4.10.0"

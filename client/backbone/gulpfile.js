@@ -2,8 +2,9 @@ const path = require('path');
 const fs = require('fs');
 const gulp = require('gulp'),
   sass = require('gulp-sass'),
-  requireConvert = require("gulp-require-convert"),
   serve = require('gulp-serve'),
+  amdOptimize = require('amd-optimize'),
+  concat = require('gulp-concat'),
   del = require('del');
 
 sass.compiler = require('node-sass');
@@ -30,15 +31,27 @@ gulp.task('clean', function() {
 });
 
 gulp.task('serve', serve({
-  root: [distPath, 'node_modules'],
+  root: '.',
   port: 8081,
 }));
 
 const buildJs = function() {
   console.log('********* BUILDING *********');
-  return gulp.src(srcPath + '/**/*.js')
-    .pipe(requireConvert())
+
+  return gulp.src(srcPath + '**/*.js')
+    .pipe(amdOptimize(srcPath + '/js/main', {
+      paths: {
+        jquery: './node_modules/jquery/dist/jquery.min',
+        underscore: './node_modules/underscore/underscore-min',
+        backbone: './node_modules/backbone/backbone-min',
+        text: './node_modules/text/text',
+        'credit-card-type': './node_modules/credit-card-type/dist/js/app.built',
+        'card-validator': './node_modules/card-validator/index'
+      }
+    }))
+    .pipe(concat('bundle.js'))
     .pipe(gulp.dest(distPath + buildFolderName));
+
 };
 
 const buildScss = function() {
@@ -47,15 +60,9 @@ const buildScss = function() {
     .pipe(gulp.dest(distPath + buildFolderName));
 };
 
-const buildHtml = function() {
-  return gulp.src(srcPath + '/**/*.html')
-    .pipe(gulp.dest(distPath + buildFolderName));
-};
-
 const watchFiles = function() {
   gulp.watch(srcPath + '/**/*.js', buildJs);
   gulp.watch(srcPath + '/**/*.scss', buildScss);
-  gulp.watch(srcPath + '/**/*.html', buildHtml);
 };
 
-gulp.task('default', gulp.series('clean', gulp.parallel(buildJs, watchFiles, buildScss, buildHtml, 'serve')));
+gulp.task('default', gulp.series('clean', gulp.parallel(buildJs, watchFiles, buildScss, 'serve')));
