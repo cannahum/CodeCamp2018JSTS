@@ -3,7 +3,7 @@ define([
   './CreditCardFormView'
 ], function(Backbone, CreditCardFormView) {
 
-  var CreditCardFormController = function() {
+  const CreditCardFormController = function() {
     this.view = new CreditCardFormView({
       el: $('#target'),
     });

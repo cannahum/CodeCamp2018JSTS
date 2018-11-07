@@ -18,9 +18,13 @@
     "underscore": "^1.9.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.5",
     "amd-optimize": "^0.6.1",
     "del": "^3.0.0",
     "gulp": "git://github.com/gulpjs/gulp.git#6d71a658c61edb3090221579d8f97dbe086ba2ed",
+    "gulp-babel": "^8.0.0-beta.2",
     "gulp-cli": "^2.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^4.0.2",

@@ -5,9 +5,12 @@ const gulp = require('gulp'),
   serve = require('gulp-serve'),
   amdOptimize = require('amd-optimize'),
   concat = require('gulp-concat'),
+  babel = require('gulp-babel'),
   del = require('del');
 
 sass.compiler = require('node-sass');
+
+const babelConfig = require('./babel.config');
 
 const basePath = path.resolve(__dirname);
 const srcPath = basePath + '/src';
@@ -39,6 +42,7 @@ const buildJs = function() {
   console.log('********* BUILDING *********');
 
   return gulp.src(srcPath + '**/*.js')
+    .pipe(babel(babelConfig))
     .pipe(amdOptimize(srcPath + '/js/main', {
       paths: {
         jquery: './node_modules/jquery/dist/jquery.min',
@@ -46,7 +50,7 @@ const buildJs = function() {
         backbone: './node_modules/backbone/backbone-min',
         text: './node_modules/text/text',
         'credit-card-type': './node_modules/credit-card-type/dist/js/app.built',
-        'card-validator': './node_modules/card-validator/index'
+        'card-validator': './src/js/lib/card-validator/index'
       }
     }))
     .pipe(concat('bundle.js'))
