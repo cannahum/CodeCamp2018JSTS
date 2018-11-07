@@ -13,11 +13,7 @@ export const validate = (id: string, value: string, callback: ValidateCallback):
   switch (id) {
 
     case 'creditCardNumber': {
-
-
-
-
-      const validation = number(false);
+      const validation = number(value);
       if (!validation.isPotentiallyValid) {
         errors.push('Please Enter a Valid Card Number');
       }
