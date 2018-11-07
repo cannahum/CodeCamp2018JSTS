@@ -1,5 +1,5 @@
 import React from 'react';
-import { validate } from '../utils';
+import { validate } from '../utils.ts';
 
 export default ({ id, currentValue, onChange, onValidation, errors }) => {
   let label;

@@ -5,12 +5,19 @@ import {
   cvv,
 } from 'card-validator';
 
-export const validate = (id, value, callback) => {
+type ValidationError = string;
+type ValidateCallback = (errors: ValidationError[]) => void;
+
+export const validate = (id: string, value: string, callback: ValidateCallback): void => {
   let errors = [];
   switch (id) {
 
     case 'creditCardNumber': {
-      const validation = number(value);
+
+
+
+
+      const validation = number(false);
       if (!validation.isPotentiallyValid) {
         errors.push('Please Enter a Valid Card Number');
       }
