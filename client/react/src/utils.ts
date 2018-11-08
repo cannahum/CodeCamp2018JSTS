@@ -5,8 +5,8 @@ import {
   cvv,
 } from 'card-validator';
 
-type ValidationError = string;
-type ValidateCallback = (errors: ValidationError[]) => void;
+export type ValidationError = string;
+export type ValidateCallback = (errors: ValidationError[]) => void;
 
 export const validate = (id: string, value: string, callback: ValidateCallback): void => {
   let errors = [];
