@@ -4,8 +4,8 @@ import { validate, ValidationError } from '../utils';
 interface IFormInputProps {
   id: string;
   currentValue: string;
-  onChange: () => void;
-  onValidation: () => void;
+  onChange: (e: React.SyntheticEvent<HTMLInputElement>) => void;
+  onValidation: (errors: ValidationError[]) => void;
   errors: ValidationError[];
 }
 
