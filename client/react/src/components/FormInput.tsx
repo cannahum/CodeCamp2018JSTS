@@ -1,7 +1,15 @@
 import React from 'react';
-import { validate } from '../utils.ts';
+import { validate, ValidationError } from '../utils';
 
-export default ({ id, currentValue, onChange, onValidation, errors }) => {
+interface IFormInputProps {
+  id: string;
+  currentValue: string;
+  onChange: () => void;
+  onValidation: () => void;
+  errors: ValidationError[];
+}
+
+export default ({ id, currentValue, onChange, onValidation, errors }: IFormInputProps) => {
   let label;
   switch (id) {
     case 'creditCardNumber': {
@@ -22,7 +30,7 @@ export default ({ id, currentValue, onChange, onValidation, errors }) => {
     }
   }
 
-  const onBlurEvent = (e) => {
+  const onBlurEvent = (e: React.SyntheticEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.nativeEvent.preventDefault();
 
