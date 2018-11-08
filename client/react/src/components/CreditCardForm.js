@@ -1,5 +1,8 @@
 import React from 'react';
-import FormInput from './FormInput';
+import CreditCardInput from './CreditCardInput';
+import MonthInput from './MonthInput';
+import YearInput from './YearInput';
+import CvvInput from './CvvInput';
 import SubmitButton from './SubmitButton';
 
 export default class CreditCardForm extends React.Component {
@@ -73,26 +76,10 @@ export default class CreditCardForm extends React.Component {
         <div id="form-container">
           <h2>Please enter your information</h2>
           <div id="form-group">
-            <FormInput id="creditCardNumber"
-                       currentValue={creditCardNumber.input}
-                       errors={creditCardNumber.errors}
-                       onChange={this.onInputChange('creditCardNumber')}
-                       onValidation={this.onInputBlurValidation('creditCardNumber')}/>
-            <FormInput id="month"
-                       currentValue={month.input}
-                       errors={month.errors}
-                       onChange={this.onInputChange('month')}
-                       onValidation={this.onInputBlurValidation('month')}/>
-            <FormInput id="year"
-                       currentValue={year.input}
-                       errors={year.errors}
-                       onChange={this.onInputChange('year')}
-                       onValidation={this.onInputBlurValidation('year')}/>
-            <FormInput id="cvv"
-                       currentValue={cvv.input}
-                       errors={cvv.errors}
-                       onChange={this.onInputChange('cvv')}
-                       onValidation={this.onInputBlurValidation('cvv')}/>
+            <CreditCardInput onChange={this.onInputChange} onValidation={this.onInputBlurValidation} data={creditCardNumber} />
+            <MonthInput onChange={this.onInputChange} onValidation={this.onInputBlurValidation} data={month} />
+            <YearInput onChange={this.onInputChange} onValidation={this.onInputBlurValidation} data={year} />
+            <CvvInput onChange={this.onInputChange} onValidation={this.onInputBlurValidation} data={cvv} />
           </div>
           <SubmitButton onClick={this.onSubmitButtonClick}/>
         </div>
